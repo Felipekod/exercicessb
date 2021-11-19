@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 class PremierController {
 	
-		@RequestMapping(method = RequestMethod.GET)
+		@RequestMapping(method = RequestMethod.GET, path="/hello")
 		public String hello() {
 			return "Hello Spring Boot!";
 		}
