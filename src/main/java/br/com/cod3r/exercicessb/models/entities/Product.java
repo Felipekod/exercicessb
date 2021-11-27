@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Product {
@@ -12,18 +15,43 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@NotBlank
 	private String nom;
 	
+	//Java validation
+	@Min(0)
+	private double prix;
+	
+	@Min(0)
+	@Max(1)
+	private double rabais;
 	
 	public Product() {
 		
 	}
 	
-	public Product(String nom) {
+	public Product(String nom, double prix, double rabais) {
 		super();
 		this.nom = nom;
+		this.prix = prix;
+		this.rabais = rabais;
 	}
 	
+	public double getPrix() {
+		return prix;
+	}
+
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
+
+	public double getRabais() {
+		return rabais;
+	}
+
+	public void setRabais(double rabais) {
+		this.rabais = rabais;
+	}
 	
 	public int getId() {
 		return id;
